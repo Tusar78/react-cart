@@ -62,7 +62,7 @@ const Navigation = () => {
                     >
                       <div className="bg-yellow-400 px-3 py-1 rounded-full flex items-center">
                         <span className="mr-1">10</span>
-                        <span className="text-white">cart</span>
+                        <img src="https://raw.githubusercontent.com/Tusar78/react-cart/main/public/images/cart.png" alt="Cart img" />
                       </div>
                     </Link>
                   </li>
