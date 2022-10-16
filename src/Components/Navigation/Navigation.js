@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navigation = () => {
+  const [toggle, setToggle] = useState(false);
   return (
     <>
       <header className="bg-white">
@@ -10,23 +11,27 @@ const Navigation = () => {
             <div className="flex-1 md:flex md:items-center md:gap-12">
               <Link className="block text-teal-600" to="/">
                 <span className="sr-only">Home</span>
-                <img src="images/logo.png" alt="website logo" />
+                <img
+                  className="w-24"
+                  src="images/logo.png"
+                  alt="website logo"
+                />
               </Link>
             </div>
 
             <div className="md:flex md:items-center md:gap-12">
               <nav
-                className="hidden md:block"
-                ariaLabelledby="header-navigation"
+                className={toggle ? "block absolute top-16 left-0 w-full bg-white" : "hidden md:block"}
+                aria-labelledby="header-navigation"
               >
                 <h2 className="sr-only" id="header-navigation">
                   Header navigation
                 </h2>
 
-                <ul className="flex items-center gap-6 text-sm">
+                <ul className="flex flex-col items-start pl-4 md:pl-0 md:flex-row md:items-center gap-6 text-sm">
                   <li>
                     <Link
-                      className="text-gray-500 transition hover:text-gray-500/75"
+                      className="text-gray-700 transition hover:text-gray-700/75"
                       to="/home"
                     >
                       Home
@@ -35,7 +40,7 @@ const Navigation = () => {
 
                   <li>
                     <Link
-                      className="text-gray-500 transition hover:text-gray-500/75"
+                      className="text-gray-700 transition hover:text-gray-700/75"
                       to="/products"
                     >
                       Products
@@ -44,7 +49,7 @@ const Navigation = () => {
 
                   <li>
                     <Link
-                      className="text-gray-500 transition hover:text-gray-500/75"
+                      className="text-gray-700 transition hover:text-gray-700/75"
                       to="/login"
                     >
                       Login
@@ -52,10 +57,13 @@ const Navigation = () => {
                   </li>
                   <li>
                     <Link
-                      className="text-gray-500 transition hover:text-gray-500/75"
+                      className="text-gray-700 transition hover:text-gray-700/75"
                       to="/cart"
                     >
-                      Cart
+                      <div className="bg-yellow-400 px-3 py-1 rounded-full flex items-center">
+                        <span className="mr-1">10</span>
+                        <span className="text-white">cart</span>
+                      </div>
                     </Link>
                   </li>
                 </ul>
@@ -63,18 +71,18 @@ const Navigation = () => {
 
               <div className="flex items-center gap-4">
                 <div className="block md:hidden">
-                  <button className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
+                  <button onClick={() => setToggle(!toggle)} className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-5 w-5"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      stroke-width="2"
+                      strokeWidth="2"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         d="M4 6h16M4 12h16M4 18h16"
                       />
                     </svg>
